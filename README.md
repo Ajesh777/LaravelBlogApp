@@ -1,6 +1,9 @@
 # Bootcamp with Laravel: 
 ```
-| Laravel | Blade | Blog | php | composer | laravelcollections | ckeditor | deploy | Hosting | CSS | SCSS | Filesystem | Node.js | artisan | sql | migrations | CRUD | Authentication | AccessControl | Best Practices |
+| Laravel | Blade | Blog | php | composer | laravelcollections | ckeditor |
+| deploy | Hosting | CSS | SCSS | Filesystem | Node.js | artisan | sql |
+| migrations | CRUD | Authentication | AccessControl | Best Practices |
+
 ```
 ## Follow the Instruction Below to learn & create your own Laravel Blog Site:
 
