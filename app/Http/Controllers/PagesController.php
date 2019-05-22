@@ -12,7 +12,7 @@ class PagesController extends Controller
     }
     // 1.1: Creating public about func
     public function about(){
-        $title = 'Laravel About!';
+        $title = 'About Us!';
         //return view('pages/about', compact('title'));
         return view('pages/about')->with('title', $title);
     }
@@ -20,7 +20,7 @@ class PagesController extends Controller
     public function services(){
         $data = array(
             'title' => 'Services',
-            'services' => ['Web Desgin', 'Programing', 'SEO']
+            'services' => ['Web Desgin', 'Programing, SEO', 'Web Hosting, Web Maintenance']
         );
         return view('pages/services')->with($data);
     } 

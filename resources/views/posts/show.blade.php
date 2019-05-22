@@ -10,15 +10,15 @@
         </div>
     </div>
     <small>Written on {{$post->created_at}} by {{$post->user->name}}</small>
-    <hr>
+    <p></p>
         <div class="container">
             <div class="row">
                 <div class="col-auto mr-auto">
-                    <a href="/posts" class="btn btn-outline-secondary">Go Back</a> 
+                    <a href="/posts" class="btn btn-outline-secondary"><i class="fa fa-arrow-alt-circle-left"></i> Go Back</a> 
                     <!-- 15.2: Button link for Editing the Post --> 
                     @if (!Auth::guest())
                         @if (Auth::user()->id == $post->user_id)
-                            <a href="/posts/{{$post->id}}/edit" class="btn btn-outline-success">Edit Post</a>
+                            <a href="/posts/{{$post->id}}/edit" class="btn btn-outline-success"><i class="fa fa-user-edit"></i> Edit Post</a>
                     <p></p>
                 </div>
                         <!-- 15.3: Create form & link button for deleting Post-->
@@ -30,4 +30,6 @@
                 @endif
             </div>
         </div>
+    <hr>
+    
 @endsection 

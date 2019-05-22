@@ -1,3 +1,4 @@
+<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 <!-- 17.1: If Errors > 0-->
 @if (count($errors) > 0)
     @foreach ($errors->all() as $error)

@@ -2,7 +2,7 @@
 @extends('layout/app')
 <!-- 21.2: Include the main section-->
 @section('content')
-    <h1>Edit Posts</h1>
+    <h1><i class="fa fa-user-edit"></i> Edit Post:</h1>
     <!-- 21.3: Form from Collective Package -->
     {!! Form::open(['action' => ['PostsController@update', $post->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
         <div class="form-group">

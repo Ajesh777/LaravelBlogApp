@@ -31,5 +31,6 @@
         <script>
             CKEDITOR.replace( 'article-ckeditor' );
         </script>
+        @include('layout.footer')
     </body>
 </html> 
