@@ -37,14 +37,14 @@
                             <a class="nav-link" href="{{ url('/') }}"><i class="fa fa-home"></i> Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/posts"><i class="fa fa-layer-group"></i> Blog</a>
+                            <a class="nav-link" href="{{ url('/posts') }}"><i class="fa fa-layer-group"></i> Blog</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="/services" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-briefcase"></i> Services</a>
+                            <a class="nav-link dropdown-toggle" href="{{ url('/services') }}" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-briefcase"></i> Services</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown01">
-                                <a class="dropdown-item" href="/services">Web Desgin</a>
-                                <a class="dropdown-item" href="/services">Programing, SEO</a>
-                                <a class="dropdown-item" href="/services">Web Hosting, Maintenance</a>
+                                <a class="dropdown-item" href="{{ url('/services') }}">Web Desgin</a>
+                                <a class="dropdown-item" href="{{ url('/services') }}">Programing, SEO</a>
+                                <a class="dropdown-item" href="{{ url('/services') }}">Web Hosting, Maintenance</a>
                             </div>
                         </li>
                         <li class="nav-item">
@@ -76,7 +76,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('dashboard') }}"><i class="fa fa-tachometer-alt"></i> Dashboard</a>
                                     <a class="dropdown-item" href="http://synergysmartsol.com/rainloop/"><i class="fa fa-envelope"></i> Email</a>
-                                    <a class="dropdown-item" href="/posts/create"><i class="fa fa-user-edit"></i> Create Post</a>
+                                    <a class="dropdown-item" href="{{ url('/posts/create') }}"><i class="fa fa-user-edit"></i> Create Post</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
