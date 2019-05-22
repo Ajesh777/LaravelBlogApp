@@ -34,7 +34,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="/"><i class="fa fa-home"></i> Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{{ url('/') }}"><i class="fa fa-home"></i> Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/posts"><i class="fa fa-layer-group"></i> Blog</a>
@@ -48,7 +48,7 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/about"><i class="fa fa-info-circle"></i> About</a>
+                            <a class="nav-link" href="{{ url('/about') }}"><i class="fa fa-info-circle"></i> About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
