@@ -142,8 +142,8 @@ class PostsController extends Controller
             // 10.5.2: Find the post with $id to be edited:
             $post = Post::find($id);
             // 28.1: Check for Correct User to Edit:
-            if((auth()->user()->id) !== ($post->user_id)){
-                return redirect('/posts')->with('error', 'Your UnAuthourized to Edit that Post.');
+            if((auth()->user()->id) != ($post->user_id)){
+                return redirect('/posts')->with('error', 'Your Not Authourized to Edit that Post.');
             } else {
                 // 10.5.1: Find the post with id sent & return the entire post using eleqouent
                 return view('posts.edit')->with('post', $post);
@@ -186,8 +186,8 @@ class PostsController extends Controller
                 $post->title = $request->input('title');
                 $post->body = $request->input('body');
                  // 28.2: Check for Correct User to Update: 31.3: & extends image verificaion:
-                if((auth()->user()->id) !== ($post->user_id)){
-                    return redirect('/posts')->with('error', 'Your UnAuthourized to Update that Post.');
+                if((auth()->user()->id) != ($post->user_id)){
+                    return redirect('/posts')->with('error', 'You are not Authorized in to Update that Post.');
                 } else {
                     // 31.3.7: Update only if Image is changed:
                     if($request->hasFile('cover_image')){
@@ -198,6 +198,7 @@ class PostsController extends Controller
                         }
                         $post->cover_image = $fileNameToStore;
                     }
+                    $post->user_id = auth()->user()->id;
                     $post->save();
                     // 10.3.3: Now Redirect with success msg
                     return redirect('/posts')->with('success', 'Post Updated Successfully!');
@@ -215,8 +216,8 @@ class PostsController extends Controller
         // 10.7.1: Find the post to be deleted with the id:
             $post = Post::find($id);
         // 28.3: Check for Correct User to Delete:
-            if((auth()->user()->id) !== ($post->user_id)){
-                return redirect('/posts')->with('error', 'Your UnAuthourized to Delete that Post.');
+            if((auth()->user()->id) != ($post->user_id)){
+                return redirect('/posts')->with('error', 'Your Not Authourized to Delete that Post.');
             } else {
                 // 31.4.1: Check if its not the default image
                 if($post->cover_image != 'noimage.jpg'){
