@@ -54,8 +54,12 @@ class PostsController extends Controller
      */
     public function create()
     {
+        if (!(auth()->user()->id)){
+            return redirect('/posts')->with('error', 'You Need to Log in to Creat Post!');
+        } else {
         // 10.2.1: Connect to posts/create page
         return view('posts.create');
+        }
     }
 
     /**
@@ -126,12 +130,12 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        // 10.5.1: Find the post with id sent & return the entire post using eleqouent
             $post = Post::find($id);
             // 28.1: Check for Correct User to Edit:
-            if(auth()->user()->id !== $post->user_id){
-                return redirect('\posts')->with('error', 'Your UnAuthourized to Edit that Post.');
+            if((auth()->user()->id) !== ($post->user_id)){
+                return redirect('/posts')->with('error', 'Your UnAuthourized to Edit that Post.');
             } else {
+                // 10.5.1: Find the post with id sent & return the entire post using eleqouent
                 return view('posts.edit')->with('post', $post);
             }
     }
@@ -171,15 +175,15 @@ class PostsController extends Controller
                 $post->title = $request->input('title');
                 $post->body = $request->input('body');
                  // 28.2: Check for Correct User to Update: 31.3: & extends image verificaion:
-                if(auth()->user()->id !== $post->user_id){
-                    return redirect('\posts')->with('error', 'Your UnAuthourized to Update that Post.');
+                if((auth()->user()->id) !== ($post->user_id)){
+                    return redirect('/posts')->with('error', 'Your UnAuthourized to Update that Post.');
                 } else {
                     // 31.3.7: Update only if Image is changed:
                     if($request->hasFile('cover_image')){
                         // 31.4.1: Check if its not the default image
                         if($post->cover_image != 'noimage.jpg'){
                             // 31.4.2: Delete the Image in the storage
-                            Storage::delete('public//cover_image/'.$post->cover_image);
+                            Storage::delete('public/cover_image/'.$post->cover_image);
                         }
                         $post->cover_image = $fileNameToStore;
                     }
@@ -200,13 +204,13 @@ class PostsController extends Controller
         // 10.7.1: Find the post to be deleted with the id:
             $post = Post::find($id);
         // 28.3: Check for Correct User to Delete:
-            if(auth()->user()->id !== $post->user_id){
-                return redirect('\posts')->with('error', 'Your UnAuthourized to Delete that Post.');
+            if((auth()->user()->id) !== ($post->user_id)){
+                return redirect('/posts')->with('error', 'Your UnAuthourized to Delete that Post.');
             } else {
                 // 31.4.1: Check if its not the default image
                 if($post->cover_image != 'noimage.jpg'){
                     // 31.4.2: Delete the Image in the storage
-                    Storage::delete('public//cover_image/'.$post->cover_image);
+                    Storage::delete('public/cover_image/'.$post->cover_image);
                 }
                 // 10.7.2: Delete the post:
                     $post->delete();
