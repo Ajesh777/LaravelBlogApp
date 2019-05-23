@@ -39,7 +39,7 @@
                                             <td>{{$post->title}}</td>
                                             <td>{{$post->created_at}}</td>
                                             <td>{{$post->updated_at}}</td>
-                                            <td><a href="{{ url('/post/'.$post->id.'/edit')}}" class="btn btn-outline-success"><i class="fa fa-pen"></i> Edit</a></td>
+                                            <td><a href="{{ url('/posts/'.$post->id.'/edit')}}" class="btn btn-outline-success"><i class="fa fa-pen"></i> Edit</a></td>
                                             <td>
                                                 <!-- 15.3: Create form & link button for deleting Post-->
                                                 {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST'])!!}
