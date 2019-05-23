@@ -9,7 +9,7 @@
         <h1><i class="fa fa-3x fa-feather-alt"></i>Ls Blog App</h1> 
         <p>Welecome, This the Laravel Blog app</p>
         @guest
-            <p><a href="/login" role="button" class="btn btn-primary btn-lg"><i class="fa fa-users"></i> Login</a> <a href="/register" role="button" class="btn btn-success btn-lg"><i class="fa fa-user-plus"></i> Register</a></p>
+            <p><a href="{{ route('login')}}" role="button" class="btn btn-primary btn-lg"><i class="fa fa-users"></i> Login</a> <a href="{{ route('register') }}" role="button" class="btn btn-success btn-lg"><i class="fa fa-user-plus"></i> Register</a></p>
         @endguest
     </div>
     <!-- Features-->
