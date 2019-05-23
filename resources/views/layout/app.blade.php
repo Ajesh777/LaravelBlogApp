@@ -27,7 +27,7 @@
             </div>
         </div>
         <!-- 19.1: Initiating the ckeditor script-->
-        <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+        <script src="{{ url('/vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
         <script>
             CKEDITOR.replace( 'article-ckeditor' );
         </script>
