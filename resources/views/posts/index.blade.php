@@ -14,7 +14,7 @@
                     <div class="col-md-8 col-sm-8">
                         <div class="card-body">
                             <!-- 14.2: Create link with id for each posts @ extends 27-->
-                            <h3><a href="/posts/{{$post->id}}">{{$post->title}}</a></h3>
+                            <h3><a href="{{ url('/posts/'.$post->id) }}">{{$post->title}}</a></h3>
                             <small>Written on {{$post->created_at}}</small>
                             <P><small> by {{$post->user->name}}</small></P>
                         </div>
