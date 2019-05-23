@@ -57,8 +57,8 @@ class PostsController extends Controller
         if (!(auth()->user()->id)){
             return redirect('/posts')->with('error', 'You Need to Log in to Creat Post!');
         } else {
-        // 10.2.1: Connect to posts/create page
-        return view('posts.create');
+            // 10.2.1: Connect to posts/create page
+            return view('posts.create');
         }
     }
 
@@ -98,13 +98,18 @@ class PostsController extends Controller
             $post = new Post;
             $post->title = $request->input('title');
             $post->body = $request->input('body');
-            // 23.1: Update the user id to posts:
-            $post->user_id = auth()->user()->id;
-            $post->cover_image = $fileNameToStore;
-            $post->save();
+            // 10.3.2.1: Check if the user is loged in:
+            if (!(auth()->user()->id)){
+                return redirect('/posts')->with('error', 'You Need to Log in to Creat Post!');
+            } else {
+                // 23.1: Update the user id to posts:
+                    $post->user_id = auth()->user()->id;
+                    $post->cover_image = $fileNameToStore;
+                    $post->save();
 
-        // 10.3.3: Now Redirect with success msg
-            return redirect('/posts')->with('success', 'Post Created Successfully!');
+                // 10.3.3: Now Redirect with success msg
+                    return redirect('/posts')->with('success', 'Post Created Successfully!');
+            }
     }
 
     /**
@@ -130,6 +135,11 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
+        // 10.5.1: Check if the user is loged in:
+        if (!(auth()->user()->id)){
+            return redirect('/posts')->with('error', 'You Need to Log in to Creat Post!');
+        } else {
+            // 10.5.2: Find the post with $id to be edited:
             $post = Post::find($id);
             // 28.1: Check for Correct User to Edit:
             if((auth()->user()->id) !== ($post->user_id)){
@@ -138,6 +148,7 @@ class PostsController extends Controller
                 // 10.5.1: Find the post with id sent & return the entire post using eleqouent
                 return view('posts.edit')->with('post', $post);
             }
+        }
     }
 
     /**
