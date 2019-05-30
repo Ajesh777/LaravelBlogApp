@@ -11,6 +11,7 @@ use App\Post;
 use App\User;
 // 10: For Using sql queries
 use DB;
+use App\Http\Resources\PostsResource;
 
 class PostsController extends Controller
 {
@@ -21,7 +22,7 @@ class PostsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('auth', ['except' => ['index', 'show', 'fetchall']]);
     }
     
     /**
@@ -41,10 +42,29 @@ class PostsController extends Controller
             //$posts = Post::orderBy('created_at', 'desc')->take(2)->get();
         // 13.1.4: For Pagination:
             $posts = Post::orderBy('created_at', 'desc')->paginate(5);
-        // 10.1.2: return posts.index, @ 13.2: inject $posts 
+        // 10.1.2: return posts.index, @ 13.2: inject $posts:
             return view('posts.index')->with('posts', $posts);
-        
-        
+    }
+
+    /**
+     * 10.1: Display a listing of the resource.
+     *
+     * @return PostsResource
+     */
+    public function fetchall()
+    {
+        // 10.1.1: Using sql query to fetch all Posts:
+            //$posts = DB::select('SELECT * FROM posts');
+        // 13.1.1: Fetch all data using eleqouent:
+            //$posts = Post::all();
+        // 13.1.2: Order by Desc:
+            //$posts = Post::orderBy('created_at', 'desc')->get();
+        // 13.1.3: For Pulling limited records:
+            //$posts = Post::orderBy('created_at', 'desc')->take(2)->get();
+        // 13.1.4: For Pagination:
+            $posts = Post::orderBy('created_at', 'desc')->paginate(5);
+        // 10.1.2: return posts.index, @ 13.2: inject $posts:
+            return PostsResource::collection($posts);
     }
 
     /**
@@ -123,6 +143,21 @@ class PostsController extends Controller
         // 10.4.1: Find the post with id sent & return the entire post using eleqouent
             $post = Post::find($id);
             return view('posts.show')->with('post', $post);
+        // 10.4.2: To use where clause
+            // return Post::where('title', 'Post Two')->get();
+    }
+
+    /**
+     * 10.4: Display the specified resource.
+     *
+     * @param  int  $id
+     * @return PostsResource
+     */
+    public function fetchone($id)
+    {
+        // 10.4.1: Find the post with id sent & return the entire post using eleqouent
+            $post = Post::findOrFail($id);
+            return new PostsResource($post);
         // 10.4.2: To use where clause
             // return Post::where('title', 'Post Two')->get();
     }
